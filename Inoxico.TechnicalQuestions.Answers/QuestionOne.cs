@@ -11,12 +11,12 @@ namespace Inoxico.TechnicalQuestions.Answers
         {
             //split the sentences using the given delimeters
             string[] sentences = s.Split(new Char[] { '!', '.', '?' });
-            List<string> finalWordList = new List<string>();
 
             var largestSentence = sentences.OrderByDescending(x => x.Length).FirstOrDefault();
-            var numberOfWords = largestSentence.Split(' ').Count();
+            if (largestSentence != null)
+                return largestSentence.Split(' ').Length;
 
-            return numberOfWords;
+            return 0;
         }
     }
 }
