@@ -1,5 +1,5 @@
 ﻿
-using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Inoxico.TechnicalQuestions.Answers
@@ -8,13 +8,18 @@ namespace Inoxico.TechnicalQuestions.Answers
     {
         public static int GetPitDepth(int[] points)
         {
-            var r = points.Take(3);
+            List<int> sums = new List<int>();
             int i = 0;
             var triplets = from x in points
                            let num = i++
                            group x by num / 3 into g
                            select g.ToArray();
-            return 4;
+            foreach (var item in triplets)
+            {
+                sums.Add(item.Sum());
+            }
+
+            return sums.Max();
         }
     }
 }
