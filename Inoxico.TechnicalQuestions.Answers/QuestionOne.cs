@@ -13,17 +13,10 @@ namespace Inoxico.TechnicalQuestions.Answers
             string[] sentences = s.Split(new Char[] { '!', '.', '?' });
             List<string> finalWordList = new List<string>();
 
-            foreach (var sentence in sentences)
-            {
-                // split words on each sentence using a space
-                var words = sentence.Split(' ');
-                foreach (var word in words)
-                {
-                    finalWordList.Add(word);
-                }
-            }
+            var largestSentence = sentences.OrderByDescending(x => x.Length).FirstOrDefault();
+            var numberOfWords = largestSentence.Split(' ').Count();
 
-            return finalWordList.OrderByDescending(x => x.Length).First().Length;
+            return numberOfWords;
         }
     }
 }
